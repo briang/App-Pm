@@ -1,0 +1,23 @@
+# generic #
+
+## editor files ##
+*~
+*.bak
+
+## toolchain leftovers ##
+blib/
+Build
+_build/
+cover_db/
+Makefile
+MANIFEST
+MANIFEST.SKIP
+META.yml
+MYMETA.yml
+
+## build tool ##
+#Build.PL
+Makefile.PL
+
+# project specific #
+App-Pm-*
