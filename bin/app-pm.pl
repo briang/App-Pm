@@ -1,5 +1,15 @@
 #!/usr/local/bin/perl
 
+BEGIN { # XXX
+    use FindBin;
+    use lib "$FindBin::Bin/../lib";
+}
+
+use App::Pm;
+App::Pm->run;
+
+__END__
+
 use 5.010;
 
 use strict;
@@ -26,11 +36,11 @@ run(@ARGV);
 sub run {
     my @argv = @_;
 
-@argv = qw(-li parser);
+#@argv = qw(-li parser);
 
     my %PROGRAM_OPTIONS = (
         'list|l'  => 'List all installed modules',
-        'long|L'  => 'List all installed modules, with locations',
+        'long|L'  => 'List the fullpath to each installed modules',
         'local'   => 'Only those modules installed in a $PERL5LIB directory, or in /usr/local',
         'sort|s'  => 'Sort the output',
         'uc|lc|i' => 'Ignore case when sorting',
@@ -85,7 +95,7 @@ sub cmd_list {
       if $sort_func;
 
     die "regexp wants to execute code: $_"
-      if grep {/\Q(?{/} @$argv;
+      if grep {/\(\?{1,2}\{/} @$argv;
     my $matcher = join "|", @$argv;
     $matcher = "(?i)$matcher"
       if $options->{uc};

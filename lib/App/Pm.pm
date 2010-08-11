@@ -1,7 +1,10 @@
 package App::Pm;
 
-use warnings;
-use strict;
+use App::Cmd::Setup -app;
+
+1;
+
+__END__
 
 =head1 NAME
 
